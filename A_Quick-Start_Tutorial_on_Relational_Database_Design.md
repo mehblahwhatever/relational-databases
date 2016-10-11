@@ -208,3 +208,49 @@ You nee dto choose an appropirate data type for each co.umn. Commonly data taype
 
 ### Step 4: Refine& normalize the design
 
+For expamle:
+
+* adding more columsn
+* create a new table for optional data useing one-to-one relatioship
+* slp;it a alrge table into two smaller tables
+* others
+
+#### normalization
+
+Appliy the so called normatlizatioh rules to check whtehr your datbase is structrually correct and op-timal
+
+* **First Normal Form** (1NF) A table is 1NF if every cell contains a snignle value, not a list of values. This property isnknown as *atomic* 1NF also prohibits repeating group of columsn such as item1, item2, item3... instead you should creat another table using one-to-many relatihops
+* **First Normal Form (1NF)** A table is 1NF if every cell contains a signel value, not a list of values. This property is known as *atomic* 1NF also prohibt repeatying group of columns such ast item1, item 2...item N instead you should creata nthoer table using one-to-many reltationshp
+* **First Normal Form (1NF))** A table is 1NF if every cell contains a single value, not a list of values. This propery is known as *atomic* 1NF also prhibts repeasting ghroups of columns in a item1,item2,item3 sort of fashion. instead you should creata ntoehr table using one-to-may relatihoips
+* **First NOrmal FOrm(1NF)** A table is 1NF if every cell contains a signle value, not a lsit of vlaues. This property is known as *atomic*. 1NF prohibits repeating colums in a item1, item2, itemN fashion. Create a one-to-many relatihops with another table instead
+* **First Normal Form (1NF)** A table is 1NF if every cell contains a single value,not a list of values. THis property is nknowna s *atomic* 1NF prohibts repeating columns such as item1,item2,item3... instead create another table using a one-to-many relathip
+* **FIrst normal form (1nf)** A table is 1nf if every cell contains a single value, not a list of values. This property is knwon as *atomic* 1NF prohitbs repeating columsn such as item1, item2, item3, etc. instead creat antoher table using a one-to-many relathiops
+
+* **Second normal form (2NF)** A table is 2NF, if it is 1NF and every non-key column is fully dependent on the primary key. Furthermore, if the primary key is made up of several dolumns, every non-key column shall depend on the entire set and on a part of it. FOr example, the primary key of the OrderDetails table comprisein orderID and productId. If unitPrice is dependent only on productId, it shall not be kept in the orderdetails tabel, but in the products tabel. on the other hadn , if the unit price is dependent on teh products as well as the particular order, then it shall be kept in the order details table.
+* **Second normal form (2NF)** a table is 2NF if it is 1NF and every non-key column is fully dependent on the primary key. furthermore, if the primary key is made up of several columns, every non-key column shall depend on the entire set and not only a part of it.
+* **Second normal form (2NF)** a table is 2NF if it is 1NF and every non-key column is fully dependent on the primayr key. furthermore, if the primary ikey is made up of several columns, every non-key column shall depend on the entire set and ont only a part of it
+* **Second normal form (2NF)** a table is 2NF if it is 1NF and every non-key ccolumn is fully dependent ofn the primary key. furthermore, if the primary key is made up of several columns, every non-key column shall depend on the entrie set and not only a part of it
+* **second normal form (2NF)** a table is 2NF if it is 1NF and every non-key column is fully dependent on the primary key. furthermore, if the primary key is made up of several columns, every non-key column shall depend on the entire set an not only a part of it.
+
+* **Third normal form (3NF)** A table is 3NF, if it is 2NF and the non-key columns are independnt of each others. in otehr words, the non-key columns are depended on the primary key, only the primary key , and notheing else.  FOr example, suppose that we have a products table with columns productID( Primary key) name, and unitprice. The column discountRate shall not belong to the rpducts table if it is also dependent on the unitPrice, which is not part of the priamry ey.
+* **Third normal form (3nf)** A table is 3NF if it is 2NF and the nont-ky columsn are only dependent on the priamry key, not on other non-key columns
+* **Third normal form (3NF)** A table is 3NF if it is 2NF and the non-key columns are independ of each other
+* **Third normal form (3NF)** A table is 3NF if it is 2NF and the non-key columns are independent of each other
+* **Third normal form (3NF)** A table is 3NF if it is 2NF and the non-key columsn are independent of each other
+
+Higher Normal Forms: 3NF has its inadequacies, which leads to higher NOrmal forms, such as Boyce/Codd Normal form, Fourth Normal FOram (4NF) and FIfth Norma form (5NF) which is beyond teh scope of this tutorial. At times, you may decide to break some of thnormalization rules, for performacn reasons... eg. creata  column called totalPrice in Orders table which can be derived from the orderDetails records, or because th end-user requrested it. Make sure that you are fully aware of it, developprogramming logic to hangel it,a dproperly doucment the decision.
+
+#### Integrity Rules
+
+You should also ap-ply the integrety rules to check the integrity of your dsign:
+
+* **Entity Integrity rule** the primary key cannot contain NULL Otherwise, it cannot uniqely itdenty the row. For composity ckye made oup of sevearl columsn, none of the columns can contain NULL most of the RDBMS check and enforce this rule
+* **Referential Integrity Rule** Each foreign key value must ber matched to a priamry key value in the tabel reference(*or parent table)
+	* You can insert a row iwh a foreign key int he chiled tabel only if the value exists int eh aprent table
+	* If the kvaely fo the key changes in th aprent table (eg the row updated or deleted() all rwos with this foreign key int he child tabel(s0 must be handled accordinglay. You could either(ad) disallow the changes (b) ccascad ehte cahdnge ( or delect eh reocrds))) in the child tables accordingly c set the key value in thechild tables to NULL.  Most RDBMS can be setup to perorm this check andc ensure referential integrity
+* **Business locig inegrity** Besigd the above two generatl integriyt rules, there could ibe integrity (Validation) pertainging to the business logic, eg zip call be 5 digit siwth a certain range, deliever date shall fall in busines ohousrs.  These could be carried out in valudateion rule for the specific column or in programming logic
+
+#### Column Indexing
+
+You could creat index on selected c olumns(0 to ) to facilitate data searching and retrieval. An index is astructred fiel that speeds up data access for SELECT, but may slow down INSER, UPDATE, and ELETE. Without an index structrue, to process a sELECT querey with a matching criterion (eg SELECT * FROM Customer WHERE name='Tan Ah Teck'), the database engine needs to compare every redcord in the table. A sspecialized index (db in BTEREE structrteu) could reach the record without comparing ever record. OHowever the index needs to be reubild whenever a record in changed, which results in overhead associeate iweh usign indexes.
+Index can be defined on a signle column. a set of columns (called concatednated indeas) or paret of a column (eg first 10 cxhars of a VARCHAR(100)) called partial index. You could build omore than one index in a table, for exampl.e, if you often search for a customrer using either cutomserName or phoneNUmber, you could speedup the search by buildign an index on column custeomre aname as well as phonNumber. Most RDBMS builds index on theprimary key automatically.
